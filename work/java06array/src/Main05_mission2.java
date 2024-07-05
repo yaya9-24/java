@@ -37,5 +37,12 @@ public class Main05_mission2 {
             }
             System.out.println();
         }
+
+        //***일반배열이 될 수 있는 경우 - 기본타입[], 참조타입[]
+        //1.기본타입 - int[],double[],char[],short[],byte[],boolean[],float[],long[]
+        //2.참조타입 - 배열[](int[][],,,), 클래스타입[](String[],Integer[]), 사용자 정의 클래스타입[](Person[],,,)
+
+        //***나중에 배울 컬렉션배열 - List,Set,Map
+
     } //end main
 } // end class
