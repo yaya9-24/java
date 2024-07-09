@@ -5,7 +5,18 @@ public class Main01 {
         System.out.println("hello");
 
         BoardVO vo = new BoardVO();
-
+        vo.setNum(77);
+        //vo.num =77; //private 전역변수 접근 불가
+        //System.out.println(vo.num); //private 전역변수 접근 불가
+        System.out.println(vo.getNum());
+        vo.setTitle("java study");
+        System.out.println(vo.getTitle());
+        vo.setContent("hello java...");
+        System.out.println(vo.getContent());
+        vo.setWriter("kim");
+        System.out.println(vo.getWriter());
+        vo.setWdate("2024-11-11");
+        System.out.println(vo.getWdate());
         System.out.println(vo.toString());
 
         BoardDAO dao = new BoardDAO();

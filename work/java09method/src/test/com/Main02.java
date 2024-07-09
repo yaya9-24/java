@@ -10,7 +10,17 @@ public class Main02 {
 
         MemberVO mv = new MemberVO();
         MemberDAO dao = new MemberDAO();
-
+        mv.setNum(924);
+        mv.setId("yaya");
+        mv.setPw("pw1234");
+        mv.setName("lee");
+        mv.setTel("010-8888-7777");
+        System.out.println(mv.getNum());
+        System.out.println(mv.getId());
+        System.out.println(mv.getPw());
+        System.out.println(mv.getName());
+        System.out.println(mv.getTel());
+        System.out.println(mv);
         dao.insert();
 
         int x =909;
