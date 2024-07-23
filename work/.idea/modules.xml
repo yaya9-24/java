@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Java12extends/Java12extends.iml" filepath="$PROJECT_DIR$/Java12extends/Java12extends.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dummyprojedct/dummyprojedct.iml" filepath="$PROJECT_DIR$/dummyprojedct/dummyprojedct.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java01hello/java01hello.iml" filepath="$PROJECT_DIR$/java01hello/java01hello.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java02type/java02type.iml" filepath="$PROJECT_DIR$/java02type/java02type.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java03operator/java03operator.iml" filepath="$PROJECT_DIR$/java03operator/java03operator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java04statment/java04statment.iml" filepath="$PROJECT_DIR$/java04statment/java04statment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java06array/java06array.iml" filepath="$PROJECT_DIR$/java06array/java06array.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java07object/java07object.iml" filepath="$PROJECT_DIR$/java07object/java07object.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java08object_mission/java08object_mission.iml" filepath="$PROJECT_DIR$/java08object_mission/java08object_mission.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java08object_mission2/java08object_mission2.iml" filepath="$PROJECT_DIR$/java08object_mission2/java08object_mission2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java08object_mission3/java08object_mission3.iml" filepath="$PROJECT_DIR$/java08object_mission3/java08object_mission3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java09method/java09method.iml" filepath="$PROJECT_DIR$/java09method/java09method.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java10static/java10static.iml" filepath="$PROJECT_DIR$/java10static/java10static.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java11math_date_string/java11math_date_string.iml" filepath="$PROJECT_DIR$/java11math_date_string/java11math_date_string.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java13interface/java13interface.iml" filepath="$PROJECT_DIR$/java13interface/java13interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java14innerClass/java14innerClass.iml" filepath="$PROJECT_DIR$/java14innerClass/java14innerClass.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java15collection/java15collection.iml" filepath="$PROJECT_DIR$/java15collection/java15collection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java16thread/java16thread.iml" filepath="$PROJECT_DIR$/java16thread/java16thread.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java17Exception/java17Exception.iml" filepath="$PROJECT_DIR$/java17Exception/java17Exception.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java18Ssingleton/java18Ssingleton.iml" filepath="$PROJECT_DIR$/java18Ssingleton/java18Ssingleton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java19Generic/java19Generic.iml" filepath="$PROJECT_DIR$/java19Generic/java19Generic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java20total_mission/java20total_mission.iml" filepath="$PROJECT_DIR$/java20total_mission/java20total_mission.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/work.iml" filepath="$PROJECT_DIR$/.idea/work.iml" />
+    </modules>
+  </component>
+</project>
