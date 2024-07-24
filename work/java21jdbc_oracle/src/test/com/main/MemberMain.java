@@ -38,6 +38,7 @@ public class MemberMain {
                 vo.setName(name);
                 vo.setTel(tel);
                 int result = dao.insert(vo);
+                System.out.println("result:"+result);
                 if (result==1){
                     System.out.println("insert completed");
                 } else{
@@ -47,8 +48,9 @@ public class MemberMain {
                 //2.update
                 System.out.println("num:");
                 int num = Integer.parseInt(br.readLine());
-                System.out.println("id:");
-                String id = br.readLine();
+                // UK and FK설정된 컬럼은 수정안 함
+                // System.out.println("id:");
+                //String id = br.readLine();
                 System.out.println("pw:");
                 String pw = br.readLine();
                 System.out.println("name:");
@@ -58,12 +60,13 @@ public class MemberMain {
 
                 MemberVO vo = new MemberVO();
                 vo.setNum(num);
-                vo.setId(id);
+                //vo.setId(id);
                 vo.setPw(pw);
                 vo.setName(name);
                 vo.setTel(tel);
                 int result = dao.update(vo);
-                if (result==1){
+                System.out.println("result:"+result);
+                if (result >= 1){
                     System.out.println("update completed");
                 } else{
                     System.out.println("update failed");
@@ -77,7 +80,8 @@ public class MemberMain {
                 vo.setNum(num);
 
                 int result = dao.delete(vo);
-                if (result==1){
+                System.out.println("result:"+result);
+                if (result >= 1){
                     System.out.println("delete completed");
                 } else{
                     System.out.println("delete failed");

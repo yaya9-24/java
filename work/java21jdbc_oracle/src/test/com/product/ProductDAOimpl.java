@@ -6,9 +6,6 @@ import java.util.List;
 
 public class ProductDAOimpl implements ProductDAO{
 
-
-    List<ProductVO> list = new ArrayList<>();
-
     private static final String DRIVER_NAME = "oracle.jdbc.driver.OracleDriver";
     private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
     private static final String USER = "java";
@@ -34,8 +31,35 @@ public class ProductDAOimpl implements ProductDAO{
         try {
             conn = DriverManager.getConnection(URL,USER,PASSWORD);
             System.out.println("conn successed...");
+
+            String sql = "insert into product(num,pname,model,price,count,user_id) " +
+                    " values(seq_product.nextval,?,?,?,?,?)";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1,vo.getPname());
+            pstmt.setString(2,vo.getModel());
+            pstmt.setInt(3,vo.getPrice());
+            pstmt.setInt(4,vo.getCount());
+            pstmt.setString(5,vo.getUser_id());
+
+            flag = pstmt.executeUpdate();
+            System.out.println("flag:"+flag);
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }finally {
+            if (pstmt!=null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (conn!=null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
         return flag;
     }
@@ -48,8 +72,35 @@ public class ProductDAOimpl implements ProductDAO{
         try {
             conn = DriverManager.getConnection(URL,USER,PASSWORD);
             System.out.println("conn successed...");
+
+            String sql = "update product set pname=?,model=?,price=?,count=?,user_id=? where num=?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1,vo.getPname());
+            pstmt.setString(2,vo.getModel());
+            pstmt.setInt(3,vo.getPrice());
+            pstmt.setInt(4,vo.getCount());
+            pstmt.setString(5,vo.getUser_id());
+            pstmt.setInt(6,vo.getNum());
+
+            flag = pstmt.executeUpdate();
+            System.out.println("flag:"+flag);
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }finally {
+            if (pstmt!=null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (conn!=null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
         return flag;
     }
@@ -62,8 +113,30 @@ public class ProductDAOimpl implements ProductDAO{
         try {
             conn = DriverManager.getConnection(URL,USER,PASSWORD);
             System.out.println("conn successed...");
+
+            String sql = "delete from product where num=?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1,vo.getNum());
+
+            flag = pstmt.executeUpdate();
+            System.out.println("flag:"+flag);
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }finally {
+            if (pstmt!=null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (conn!=null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
 
         return flag;
@@ -94,6 +167,28 @@ public class ProductDAOimpl implements ProductDAO{
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }finally {
+            if (rs!=null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (pstmt!=null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (conn!=null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
         return vo2;
     }
@@ -123,6 +218,28 @@ public class ProductDAOimpl implements ProductDAO{
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }finally {
+            if (rs!=null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (pstmt!=null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (conn!=null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
         return list;
     }
@@ -159,6 +276,28 @@ public class ProductDAOimpl implements ProductDAO{
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }finally {
+            if (rs!=null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (pstmt!=null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (conn!=null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
         return vos;
     }

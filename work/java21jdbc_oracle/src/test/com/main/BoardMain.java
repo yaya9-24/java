@@ -84,7 +84,10 @@ public class BoardMain {
                 BoardVO vo = new BoardVO();
                 vo.setNum(num);
                 BoardVO vo2 = dao.selectOne(vo);
-                System.out.println(vo2);
+                System.out.printf("%3s %5s %9s %10s %12s\n"
+                        ,"번호","제목","내용","작성자","작성일자");
+                System.out.printf("%3d %10s %10s %10s %20s\n"
+                        ,vo2.getNum(),vo2.getTitle(),vo2.getContent(),vo2.getWriter(),vo2.getWdate());
                 if (vo2!=null){
                     System.out.println("delete completed");
                 } else if (vo2==null){

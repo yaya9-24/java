@@ -36,12 +36,16 @@ public class ProductMain {
                 int price = Integer.parseInt(br.readLine());
                 System.out.println("count:");
                 int count = Integer.parseInt(br.readLine());
+                System.out.println("user_id:");
+                String user_id = br.readLine();
 
                 vo = new ProductVO();
                 vo.setPname(pname);
                 vo.setModel(model);
                 vo.setPrice(price);
                 vo.setCount(count);
+                vo.setUser_id(user_id);
+
                 result = dao.insert(vo);
                 System.out.println("result:"+result);
                 if (result==1){
@@ -61,6 +65,8 @@ public class ProductMain {
                 int price = Integer.parseInt(br.readLine());
                 System.out.println("count:");
                 int count = Integer.parseInt(br.readLine());
+                System.out.println("user_id:");
+                String user_id = br.readLine();
 
                 vo = new ProductVO();
                 vo.setNum(num);
@@ -68,6 +74,8 @@ public class ProductMain {
                 vo.setModel(model);
                 vo.setPrice(price);
                 vo.setCount(count);
+                vo.setUser_id(user_id);
+
                 result = dao.update(vo);
                 System.out.println("result:"+result);
                 if (result==1){
