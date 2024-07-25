@@ -30,7 +30,7 @@ public class CommentsDAOimpl implements CommentsDAO{
         int flag =0;
         try {
             conn = DriverManager.getConnection(URL,USER,PASSWORD);
-            System.out.println("conn success...");
+            System.out.println("conn successed...");
 
             String sql = "insert into comments(num,content,writer,bnum) " +
                     "values(seq_comments.nextval,?,?,?)";
@@ -39,7 +39,8 @@ public class CommentsDAOimpl implements CommentsDAO{
             pstmt.setString(2,vo.getWriter());
             pstmt.setInt(3,vo.getBnum());
 
-            flag = pstmt.executeUpdate();
+            flag = pstmt.executeUpdate(); //DML
+            System.out.println("flag:"+flag);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -76,6 +77,7 @@ public class CommentsDAOimpl implements CommentsDAO{
             pstmt.setInt(2,vo.getNum());
 
             flag = pstmt.executeUpdate();
+            System.out.println("flag:"+flag);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
@@ -110,6 +112,7 @@ public class CommentsDAOimpl implements CommentsDAO{
             pstmt.setInt(1,vo.getNum());
 
             flag = pstmt.executeUpdate();
+            System.out.println("flag:"+flag);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
@@ -136,6 +139,49 @@ public class CommentsDAOimpl implements CommentsDAO{
         System.out.println("selectOne()...");
         System.out.println(vo);
         CommentsVO vo2 = null;
+
+        try {
+            conn = DriverManager.getConnection(URL,USER,PASSWORD);
+
+            String sql = "select * from comments where num=? order by num desc";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1,vo.getNum());
+
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                vo2 = new CommentsVO();
+                vo2.setNum(rs.getInt("num"));
+                vo2.setContent(rs.getString("content"));
+                vo2.setWriter(rs.getString("writer"));
+                vo2.setWdate(new Timestamp(rs.getTimestamp("wdate").getTime()).toString());
+                vo2.setBnum(rs.getInt("bnum"));
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            if (rs!=null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (pstmt!=null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (conn!=null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
         return vo2;
     }
 
@@ -196,6 +242,56 @@ public class CommentsDAOimpl implements CommentsDAO{
         System.out.println("searchList()...searchKey:"+searchKey);
         System.out.println("searchList()...searchWord:"+searchWord);
         List<CommentsVO> list = new ArrayList<>();
+        try {
+            conn = DriverManager.getConnection(URL,USER,PASSWORD);
+
+            String sql = "";
+            if (searchKey.equals("content")){
+                sql = "select * from comments where bnum=? and content like ? order by num desc";
+            }else {
+                sql = "select * from comments where bnum=? and writer like ? order by num desc";
+            }
+
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1,bnum);
+            pstmt.setString(2,"%"+searchWord+"%");
+
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                CommentsVO vo = new CommentsVO();
+                vo.setNum(rs.getInt("num"));
+                vo.setContent(rs.getString("content"));
+                vo.setWriter(rs.getString("writer"));
+                vo.setWdate(new Timestamp(rs.getTimestamp("wdate").getTime()).toString());
+                vo.setBnum(rs.getInt("bnum"));
+                list.add(vo);
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            if (rs!=null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (pstmt!=null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (conn!=null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
         return list;
     }
 

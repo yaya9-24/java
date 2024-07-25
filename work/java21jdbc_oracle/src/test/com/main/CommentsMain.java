@@ -56,14 +56,10 @@ public class CommentsMain {
                 int num = Integer.parseInt(br.readLine());
                 System.out.println("content:");
                 String content = br.readLine();
-                System.out.println("writer:");
-                String writer = br.readLine();
-
 
                 CommentsVO vo = new CommentsVO();
                 vo.setNum(num);
                 vo.setContent(content);
-                vo.setWriter(writer);
 
                 int result = dao.update(vo);
                 System.out.println("result:"+result);
@@ -98,9 +94,9 @@ public class CommentsMain {
                 vo.setNum(num);
 
                 CommentsVO vo2 = dao.selectOne(vo);
-                System.out.printf("%3s  %9s %10s %12s\n"
+                System.out.printf("%5s %10s %10s %12s\n"
                         ,"번호","내용","작성자","작성일자");
-                System.out.printf("%3d %10s %10s %10s %20s\n"
+                System.out.printf("%5d %15s %10s %10s \n"
                         ,vo2.getNum(),vo2.getContent(),vo2.getWriter(),vo2.getWdate());
                 if (vo2!=null){
                     System.out.println("selectOne completed");
@@ -108,7 +104,7 @@ public class CommentsMain {
                     System.out.println("selectOne failed");
                 }
             } else if (menu.equals("5")){
-                //5.댓글 모두 검색
+                //5.댓글 모두 검색(selectAll)
                 System.out.println("bnum:");
                 int bnum = Integer.parseInt(br.readLine());
 
@@ -132,10 +128,10 @@ public class CommentsMain {
                 int bnum = Integer.parseInt(br.readLine());
 
                 List<CommentsVO> list = dao.searchList(searchKey,searchWord,bnum);
-                System.out.printf("%3s %5s %5s %20s %10s\n"
+                System.out.printf("%3s %5s %8s %20s %10s\n"
                         ,"게시글번호","댓글번호","내용","작성자","작성일자");
                 for (CommentsVO x : list){
-                    System.out.printf("%3d %3d %5s %5s         %20s \n"
+                    System.out.printf("%8d %8d %10s %10s %20s \n"
                             ,x.getBnum(),x.getNum(),x.getContent(),x.getWriter(),x.getWdate());
                 }
             }
