@@ -9,4 +9,6 @@ public interface EmpDAO {
     public EmpVO selectOne(EmpVO vo);
     public List<EmpVO> selectAll();
     public List<EmpVO> searchList(String searchKey, String searchWord);
+    public List<EmpDeptVO> selectAll2();
+    public List<EmpJobVO> selectAll3();
 }

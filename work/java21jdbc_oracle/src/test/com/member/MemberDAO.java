@@ -3,6 +3,7 @@ package test.com.member;
 import java.util.List;
 
 public interface MemberDAO {
+    public MemberVO idCheck(String id);
     public int insert(MemberVO vo);
     public int update(MemberVO vo);
     public int delete(MemberVO vo);

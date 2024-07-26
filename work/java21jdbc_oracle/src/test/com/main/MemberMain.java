@@ -25,6 +25,18 @@ public class MemberMain {
                 //1.insert
                 System.out.println("id:");
                 String id = br.readLine();
+
+                //입력한 id 검증이 필요하다.
+                //즉, 중복체크가 필요하다.
+                //중복되지 않은 회원아이디인 경우만 다음으로 진행
+                MemberVO vo2 = dao.idCheck(id);
+                while(vo2!=null){
+                    System.out.println("중복된 아이디입니다.");
+                    System.out.println("id:");
+                    id = br.readLine();
+                    vo2 = dao.idCheck(id);
+                }
+                System.out.println("사용가능한 아이디입니다.");
                 System.out.println("pw:");
                 String pw = br.readLine();
                 System.out.println("name:");

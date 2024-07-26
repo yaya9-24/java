@@ -36,6 +36,30 @@ public class MemberDAOimpl implements MemberDAO{
     }
 
     @Override
+    public MemberVO idCheck(String id) {
+        System.out.println("idCheck()...");
+        System.out.println(id);
+        MemberVO vo = null;
+
+        try {
+            conn = DriverManager.getConnection(URL,USER,PASSWORD);
+
+            String sql = "select * from member where id=?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1,id);
+
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                vo = new MemberVO();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return vo;
+    }
+
+    @Override
     public int insert(MemberVO vo) {
         System.out.println("insert()...");
         System.out.println(vo);

@@ -1,7 +1,5 @@
 package test.com.job;
 
-import test.com.dept.DeptVO;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +22,35 @@ public class JobDAOimpl implements JobDAO{
             throw new RuntimeException(e);
         }
     }
+
+
+    @Override
+    public boolean cname(String str) {
+        Boolean isDuplicate = false;
+        try {
+            conn = DriverManager.getConnection(URL,USER,PASSWORD);
+
+            String sql = "select job_id from job";
+            pstmt = conn.prepareStatement(sql);
+
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                if (str.equals(rs.getString("job_id"))) {
+                    isDuplicate = true;
+                    break;
+                }
+            }
+            if (isDuplicate==false){
+                System.out.println("사용 가능한 아이디입니다.");
+            } else if (isDuplicate ==true) {
+                System.out.println("중복된 아이디입니다.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return isDuplicate;
+    }
+
     @Override
     public int insert(JobVO vo) {
         System.out.println("insert()...");
@@ -150,13 +177,57 @@ public class JobDAOimpl implements JobDAO{
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1,vo.getJob_id());
 
-            rs = pstmt.executeQuery();;
+            rs = pstmt.executeQuery();
             while (rs.next()){
                 vo2 = new JobVO();
                 vo2.setJob_id(rs.getString("job_id"));
                 vo2.setJob_title(rs.getString("job_title"));
                 vo2.setMin_salary(rs.getInt("min_salary"));
                 vo2.setMax_salary(rs.getInt("max_salary"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        return vo2;
+    }
+
+    @Override
+    public JobVO job_idCheck(String job_id) {
+        System.out.println("job_idCheck()...");
+        System.out.println(job_id);
+        JobVO vo2 =null;
+        try {
+            conn = DriverManager.getConnection(URL,USER,PASSWORD);
+
+            String sql = "select * from job where job_id=?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1,job_id);
+
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                vo2 = new JobVO();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -10,6 +10,7 @@ import test.com.job.JobVO;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JobMain {
@@ -26,6 +27,18 @@ public class JobMain {
                 //1.입력
                 System.out.println("job_id:");
                 String job_id = br.readLine();
+                //입력한 job_id 검증이 필요하다.
+                //즉,중복체크가 필요하다.
+                //중복되지 않은 업무코드인 경우만 다음으로 진행
+
+                JobVO vo2 = dao.job_idCheck(job_id);
+                while (vo2!=null){
+                    System.out.println("중복된코드");
+                    System.out.println("job_id:");
+                    job_id =br.readLine();
+                    vo2 = dao.job_idCheck(job_id);
+                }
+                System.out.println("사용가능");
                 System.out.println("job_title:");
                 String job_title = br.readLine();
                 System.out.println("min_salary:");
@@ -115,6 +128,17 @@ public class JobMain {
                 for (JobVO x: list){
                     System.out.printf("%12s%45s%8d%8d\n"
                             ,x.getJob_id(),x.getJob_title(),x.getMin_salary(),x.getMax_salary());
+                }
+            } else if (menu.equals("9")) {
+                //job_id 중복유무를 판단해서 출력하는 로직을 구현하세요.
+                //사용가능, 중복된코드와 같은 출력처리
+                System.out.println("job_id:");
+                String job_id ="IT_PROG";
+                JobVO vo = dao.job_idCheck(job_id);
+                if (vo==null){
+                    System.out.println("사용가능");
+                }else {
+                    System.out.println("중복된코드");
                 }
             }
 
