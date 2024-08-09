@@ -72,7 +72,7 @@ public class DeptDAOimpl implements DeptDAO{
             conn = DriverManager.getConnection(URL,USER,PASSWORD);
             System.out.println("conn successed...");
 
-            String sql = "update dept set department_name=?,manager_id=?,location_id " +
+            String sql = "update dept set department_name=?,manager_id=?,location_id=? " +
                     " where department_id=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1,vo.getDepartment_name());
@@ -249,7 +249,7 @@ public class DeptDAOimpl implements DeptDAO{
                 pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1,"%"+searchWord+"%");
             }else {
-                sql = "select * from dept where manager_id=? order by department_id;";
+                sql = "select * from dept where manager_id=? order by department_id";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.setInt(1,Integer.parseInt(searchWord));
             }
