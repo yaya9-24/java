@@ -11,7 +11,7 @@ public class Main01 {
     public static void main(String[] args){
         System.out.println("hello...");
 
-        //자바 스트림이란? : jdk8에 추가된 객체
+        //자바 스트림이란? : jdk8에 추가된 객체, 함수형 프로그래밍을 지향
         // 제어문 또는 쿼리문 기능을 함수로 대체해서 표현가능한 문법
         // 컬렉션과 배열 등의 요소들을 참조하여 람다식을 적용할 수 있다.
         // 반복수행하는 기능구현에 뛰어나다.

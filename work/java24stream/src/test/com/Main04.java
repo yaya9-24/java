@@ -13,7 +13,7 @@ public class Main04 {
         //[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         System.out.println(IntStream.range(0,10).boxed().toList());
 
-        //forEach함수를 사용하여 출력방법을 달리할 수 있다.
+        //forEach함수를 사용하여 함수형 프로그래밍 방식으로 출력방법을 달리할 수 있다.
         IntStream.range(0,10).boxed().forEach(System.out::print); //한줄 출력 : 0123456789
         IntStream.range(0,10).boxed().forEach(System.out::println); //개행하면서 출력
 
